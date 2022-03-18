@@ -1,0 +1,22 @@
+{
+    "name": "Chat Overlay",
+    "description": "Overlays a chat onto the page",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+      },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["socket.io.js","chatBuilder.js","socketBuilder.js"]
+      }
+    ],
+    "permissions": ["storage", "declarativeContent", "activeTab", "scripting", "tabs"],
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    }
+  }
