@@ -1,5 +1,11 @@
+/*
+*Created by Jonathan Williams (jonwilliams7129@gmail.com)
+*Released under the MIT License.
+*Drag and drop functionality provided by a modified source code from https://www.w3schools.com/howto/howto_js_draggable.asp
+*/
+
 //creates chatbox
-document.body.innerHTML += '<div class="chat__main" id="chat__main" style="position: absolute; position: fixed; margin-left: 10px; bottom: 40px; z-index: 9000; height: 300px; width: 300px; background-color: rgba(52, 54, 56, 0.8); border-radius: 25px;" ><div id="chat__mainheader" style="padding: 10px; cursor: move; z-index: 10; background-color: rgba(52, 54, 56); color: #fff;">Chat Overlay</div><div name = "messages" id="messages" class="chat__messages" style = "height: 270px; flex-grow: 1;padding: 0px 24px 0 0px;overflow-y: scroll;"></div><div class="compose" style = "bottom: 0"><form id="message-form" style = "margin-left: 10px;"><input id="message" placeholder="Message" required autocomplete="off"><button id ="send">Send</button></form></div></div>'
+document.body.innerHTML += '<div class="chat__main" id="chat__main" style="position: absolute; position: fixed; margin-left: 10px; bottom: 40px; z-index: 9000; height: 300px; width: 300px; background-color: rgba(52, 54, 56, 0.8); border-radius: 25px;" ><div id="chat__mainheader" style="text-align: center; padding: 10px; cursor: move; z-index: 10; background-color: rgba(52, 54, 56); color: #fff;"></div><div name = "messages" id="messages" class="chat__messages" style = "height: 270px; flex-grow: 1;padding: 0px 24px 0 0px;overflow-y: scroll;"></div><div class="compose" style = "bottom: 0"><form id="message-form" style = "margin-left: 10px;"><input id="message" placeholder="Message" required autocomplete="off"><button id ="send" style="background-color: rgba(52, 54, 56); margin-left: 10px; padding: 5px; border-radius: 25px;">Send</button></form></div></div>'
 
 //gets history from local storage
 chrome.storage.sync.get("history", ({ history }) => {
@@ -8,6 +14,16 @@ chrome.storage.sync.get("history", ({ history }) => {
     //fills messages div with chat history
     history.forEach((x, i) => messages.innerHTML += '<p><span class="message__name" style ="font-weight: 600;font-size: 14px;margin-right: 8px;">'+x.display+'</span></p><p>&gt;'+x.message+'</p>');
   });
+});
+
+//Displays room code on header
+chrome.storage.sync.get("room", ({ room }) => {
+  if(room == ''){
+    document.getElementById("chat__mainheader").innerHTML = "Enter a room code in the extension toolbar!"
+  }
+  else{
+    document.getElementById("chat__mainheader").innerHTML = "Room: " + room
+  }
 });
 
 //allows chatbox to be draggable
