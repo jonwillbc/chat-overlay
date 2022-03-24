@@ -1,6 +1,6 @@
 {
     "name": "Chat Overlay",
-    "description": "Overlays a chat onto the page",
+    "description": "Overlays a chat onto the page, allowing user to pick a display name and room code and chat with their friends on a server they provide. A server is provided by default, code for which can be found at https://github.com/jonwillbc/chat-overlay-server",
     "version": "1.0",
     "manifest_version": 3,
     "background": {
@@ -18,6 +18,16 @@
     ],
     "permissions": ["storage", "declarativeContent", "activeTab", "scripting", "tabs"],
     "action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": {
+          "16": "/images/chat16.png",
+          "32": "/images/chat32.png"
+          }
+    },
+    "icons": {
+      "16": "/images/chat16.png",
+      "32": "/images/chat32.png",
+      "64": "/images/chat64.png",
+      "128": "/images/chat128.png"
     }
   }
