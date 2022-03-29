@@ -1,6 +1,6 @@
 {
     "name": "Chat Overlay",
-    "description": "Overlays a chat onto the page, allowing user to pick a display name and room code and chat with their friends on a server they provide. A server is provided by default, code for which can be found at https://github.com/jonwillbc/chat-overlay-server",
+    "description": "Overlays a chat onto the page, allowing users to pick a name and room code and chat with their friends on a server they provide.",
     "version": "1.0",
     "manifest_version": 3,
     "background": {
@@ -16,7 +16,7 @@
       "<all_urls>",
       "https://jwilliams-chatserver.herokuapp.com/"
     ],
-    "permissions": ["storage", "declarativeContent", "activeTab", "scripting", "tabs"],
+    "permissions": ["storage"],
     "action": {
         "default_popup": "popup.html",
         "default_icon": {

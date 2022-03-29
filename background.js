@@ -6,7 +6,7 @@
 let display = 'Anon';
 let history = [];
 let room = '';
-let server = 'https://jwilliams-chatserver.herokuapp.com/';
+let server = '';
 
 //sets default display name to Anon
 chrome.runtime.onInstalled.addListener(() => {
